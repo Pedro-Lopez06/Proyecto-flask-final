@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <div class="card card-body">
+        <div class="col-md-12">
+            <form class="row g-3" action="/actualizar/{{cliente.0}}" method="POST">
+                <div class="form-group col-md-6">
+                    <input type="text" name="nombre" placeholder="Nombre" value="{{cliente.1}}" class="form-control">
+
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" name="apellido" placeholder="Apellido" value="{{cliente.2}}" class="form-control">
+
+                </div>
+                <div class="form-group col-md-12">
+                    <input type="text" name="direccion" placeholder="Direccion" value="{{cliente.3}}" class="form-control">
+
+                </div>
+                <div class="form-group col-md-3">
+                    <input type="text" name="telefono" placeholder="Telefono" value="{{cliente.4}}" class="form-control">
+
+                </div>
+                <div class="form-group col-md-9">
+                    <input type="text" name="localidad" placeholder="Localidad" value="{{cliente.5}}" class="form-control">
+
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" name="ip_wam" placeholder="IP WAM" value="{{cliente.6}}" class="form-control">
+
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" name="ip_lan" placeholder="IP LAN" value="{{cliente.7}}" class="form-control">
+
+                </div>
+                <div class="form-group" class="form-control">
+                    <button type="submit" class="btn btn-success btn-block">
+                        Actualizar
+                    </button>
+                </div>
+                
+            
+            </form>
+        </div>
+    </div>
+{% endblock %}

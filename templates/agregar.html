@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="row">
+    {% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+    
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }} Satisfactoriamente
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      
+{% endfor %}
+{% endif %}
+{% endwith %}
+    <div class="col-md7">
+        <div class="card card-body">
+            <form class="row g-3" action="/agregar_clientes" method="POST">
+                <div class="form-group col-md-6">
+                    <input type="text" name="nombre" placeholder="Nombre" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                 
+                    <input type="text" name="apellido" placeholder="Apellido" class="form-control">
+                </div>
+                <div class="form-group col-md-12">
+                    <input type="text" name="direccion" placeholder="Direccion" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                    <input type="text" name="telefono" placeholder="Telefono" class="form-control">
+                </div>
+                <div class="form-group col-md-9">
+                    <input type="text" name="localidad" placeholder="Localidad" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" name="ip_wam" placeholder="IP WAM" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" name="ip_lan" placeholder="IP LAN" class="form-control">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Guardar
+                    </button>
+                </div>
+                
+            
+            </form>
+        </div>
+        
+    </div>
+    <div class="col-md5 pt-4">
+        <table class="table table-striped table-border bg-white table-small">
+            <thead>
+                <tr>
+                    <td>Nombre</td>
+                    <td>Apellido</td>
+                    <td>Dirección</td>
+                    <td>Teléfono</td>
+                    <td>Localidad</td>
+                    <td>IP_WAM</td>
+                    <td>IP_LAN</td>
+                    <td>Operaciones</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes %}
+                <tr>
+                    <td>{{cliente.1}}</td>
+                    <td>{{cliente.2}}</td>
+                    <td>{{cliente.3}}</td>
+                    <td>{{cliente.4}}</td>
+                    <td>{{cliente.5}}</td>
+                    <td>{{cliente.6}}</td>
+                    <td>{{cliente.7}}</td>
+                    <td><a href="/actualizar/{{cliente.0}}" class="btn btn-secundary">Actualizar</a>
+                    <a href="/eliminar/{{cliente.0}}" class="btn btn-danger btn-delete">Borrar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
